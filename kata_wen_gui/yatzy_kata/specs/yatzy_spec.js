@@ -17,7 +17,7 @@ describe('yatzy', function(){
         noOne = [2,3,2,4,5]
         oneOne = [1,4,6,3,5]
         twoOnes = [1,1,3,4,6]
-        threeOnes = [1,1,1,3,4]
+        threeOnes = [1,4,1,3,4]
         fourOnes = [1,1,1,1,4]
         yatzyOne = [1,1,1,1,1]
         smallStraight = [1,2,3,4,5]
@@ -49,8 +49,14 @@ describe('yatzy', function(){
         const actual = yatzy(oneOne, "fives");
         assert.strictEqual(actual,5)
     })
-
-   
+    it("should calculate score for sixs", function(){
+        const actual = yatzy(twoOnes, "sixs");
+        assert.strictEqual(actual,6)
+    })
+    it("should calculate score for fours", function(){
+        const actual = yatzy(threeOnes, "fours");
+        assert.strictEqual(actual,8)
+    })
     it("should give 0 if no one for ones", function(){
         const actual = yatzy(noOne, "ones");
         assert.strictEqual(actual,0)

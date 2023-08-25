@@ -46,9 +46,10 @@ const yatzy = function(diceRoll, rollCase){
         }
         return oneToSix
     }
+
     const calculateNumsScore = (arr,rollCase)=>{
         const oneToSix = rollCaseForNums(rollCase)
-        console.log("oneToSix: ",oneToSix);
+       // console.log("oneToSix: ",oneToSix);
         const filteredArray = arr.filter((num)=>num === oneToSix); 
         return filteredArray.reduce((sum,num)=> {
             return sum += num
@@ -65,6 +66,10 @@ const yatzy = function(diceRoll, rollCase){
             break;
         case "ones":
         case "twos":
+        case "threes":
+        case "fours":    
+        case "fives":
+        case "sixs":    
             result = calculateNumsScore(diceRoll, rollCase)
             break;
     }
