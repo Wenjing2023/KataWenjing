@@ -1,0 +1,17 @@
+{
+  "name": "yatzy_kata",
+  "version": "1.0.0",
+  "description": "",
+  "main": "yatzy.js",
+  "scripts": {
+    "test": "mocha specs"
+  },
+  "keywords": [
+    "kata"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^10.2.0"
+  }
+}
