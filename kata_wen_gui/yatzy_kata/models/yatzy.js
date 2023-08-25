@@ -5,7 +5,7 @@ const yatzy = function(diceRoll, rollCase){
         return arr.reduce((sum, num) => sum += num);
     }
 
-    const checkForYatzy = (arr) => {
+    const checkForYatzyByFilter = (arr) => {
         const yatzyAchieved = arr.filter((num) => num === arr[0]);
         if (yatzyAchieved.length === 5) {
             return 50
@@ -14,13 +14,21 @@ const yatzy = function(diceRoll, rollCase){
         }
     }
 
+    const checkForYatzyByEvery = (arr) => {
+        const yatzyAchieved = arr.every((index) => arr[index] === arr[0])
+        if (yatzyAchieved) {
+            return 50
+        }
+        return yatzyAchieved
+    }
+
 
     switch(rollCase) {
         case "chance":
             result = calculateChanceScore(diceRoll)
             break;
         case "yatzy":
-            result = checkForYatzy(diceRoll)
+            result = checkForYatzyByEvery(diceRoll)
             break;
     }
 
