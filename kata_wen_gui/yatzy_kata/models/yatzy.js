@@ -1,5 +1,5 @@
 const yatzy = function(diceRoll, rollCase){
-    let result = false;
+    let result = 0;
 
     const calculateChanceScore = function(arr) {
         return arr.reduce((sum, num) => sum += num);
@@ -10,7 +10,7 @@ const yatzy = function(diceRoll, rollCase){
         if (yatzyAchieved.length === 5) {
             return 50
         } else { 
-            return false
+            return 0
         }
     }
 
@@ -19,7 +19,7 @@ const yatzy = function(diceRoll, rollCase){
         if (yatzyAchieved) {
             return 50
         }
-        return yatzyAchieved
+        return 0
     }
 
     const rollCaseForNums = (rollCase)=>{
@@ -40,7 +40,7 @@ const yatzy = function(diceRoll, rollCase){
             case "fives":
                 oneToSix = 5
                 break;
-            case "sixs":
+            case "sixes":
                 oneToSix = 6
                 break;
         }
@@ -56,6 +56,15 @@ const yatzy = function(diceRoll, rollCase){
         },0);
     }
 
+    const checkAndCalculateforPairs = function(arr) {
+        const dictOfNumbers = {}
+        for (let i = 1; i <= 6; i++) {
+            const numArray = arr.filter((num)=>num === i)
+            dictOfNumbers["arrayOf" + i + "s"] = numArray.length >= 2 ? numArray[0] + numArray[1] : 0;
+        }
+        return Math.max(...Object.values(dictOfNumbers))
+    }
+
 
     switch(rollCase) {
         case "chance":
@@ -69,9 +78,13 @@ const yatzy = function(diceRoll, rollCase){
         case "threes":
         case "fours":    
         case "fives":
-        case "sixs":    
+        case "sixes":    
             result = calculateNumsScore(diceRoll, rollCase)
             break;
+        case "pairs":
+            result = checkAndCalculateforPairs(diceRoll)
+            break;
+        
     }
 
     return result;
