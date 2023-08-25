@@ -41,4 +41,19 @@ describe('yatzy', function(){
         assert.strictEqual(actual, false);
     })
 
+    it("should calculate score for ones", function(){
+        const actual = yatzy(oneOne, "ones");
+        assert.strictEqual(actual,1)
+    })
+    it("should calculate score for fives", function(){
+        const actual = yatzy(oneOne, "fives");
+        assert.strictEqual(actual,5)
+    })
+
+   
+    it("should give 0 if no one for ones", function(){
+        const actual = yatzy(noOne, "ones");
+        assert.strictEqual(actual,0)
+    })
+   
 })
