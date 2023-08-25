@@ -1,7 +1,6 @@
 const assert=require('assert')
 
 const yatzy = require ('../models/yatzy.js')
-const { chance } = require('../models/yatzy.js')
 
 describe('yatzy', function(){
     let noOne 
@@ -27,12 +26,19 @@ describe('yatzy', function(){
     })
 
     it('should caculate sum of all dice', function(){
-        const actual = chance(noOne)
-        assert.strictEqual(actual,16 )
+        const actual = yatzy(noOne, "chance");
+        assert.strictEqual(actual, 16);
 
     })
-    //dfgafg
 
+    it('should identify that an array is actually a yatzy', function() {
+        const actual = yatzy(yatzyOne, "yatzy");
+        assert.strictEqual(actual, 50);
+    })
 
+    it('should identify that an array is not actually a yatzy', function() {
+        const actual = yatzy(noOne, "yatzy");
+        assert.strictEqual(actual, false);
+    })
 
 })
