@@ -5,6 +5,8 @@ import org.junit.Test;
 
 import java.time.LocalDate;
 
+import static org.junit.Assert.assertEquals;
+
 public class BankAccountTest {
     BankAccount bankAccount;
     Transaction transaction1;
@@ -24,8 +26,9 @@ public class BankAccountTest {
     }
     @Test
     public void canDeposit (){
-        
-        asserEquals();
+        bankAccount.depositOrWithdraw(1000);
+        int actual = bankAccount.getCurrentBalance();
+        assertEquals(1000, actual);
     }
 
 

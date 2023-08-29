@@ -6,6 +6,7 @@ import java.time.LocalDate;
 public class Transaction {
     private LocalDate date;
     private int amount;
+    private int balanceAfterTransaction;
 
     public Transaction(LocalDate date, int amount){
         this.date = date;
@@ -27,4 +28,14 @@ public class Transaction {
     public void setAmount(int amount) {
         this.amount = amount;
     }
+
+    public int getBalanceAfterTransaction() {
+        return this.balanceAfterTransaction;
+    }
+
+    public void setBalanceAfterTransaction(int balanceAfterTransaction) {
+        this.balanceAfterTransaction = balanceAfterTransaction;
+    }
+
+
 }

@@ -40,13 +40,12 @@ public class BankAccount implements BankAccountController {
         this.transactions = transactions;
     }
 
-    public void addTransaction(int amount) {
+    public void depositOrWithdraw(int amount) {
       if (isDeposit(amount)){
           this.deposit(amount);
       }else{
           this.withdraw(amount);
       }
-
     }
 
     public boolean isDeposit(int amount) {
@@ -60,12 +59,17 @@ public class BankAccount implements BankAccountController {
 
     public void deposit(int amount) {
         Transaction transaction = this.createTransaction(amount);
+        this.setCurrentBalance(this.getCurrentBalance() + amount);
+        transaction.setBalanceAfterTransaction(this.getCurrentBalance());
         this.transactions.add(transaction);
     };
 
     public void withdraw(int amount) {
         Transaction transaction = this.createTransaction(amount);
+        this.setCurrentBalance(this.getCurrentBalance() + amount);
+        transaction.setBalanceAfterTransaction(this.getCurrentBalance());
         this.transactions.add(transaction);
+
     };
 
     public void printStatement() {
