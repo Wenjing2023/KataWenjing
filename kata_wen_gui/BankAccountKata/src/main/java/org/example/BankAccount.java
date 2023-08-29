@@ -2,6 +2,8 @@ package org.example;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class BankAccount implements BankAccountController {
     private String ownerName;
@@ -79,7 +81,7 @@ public class BankAccount implements BankAccountController {
 
     public void printStatement() {
         //add information to arrayList
-        List<List<String>> rows = new ArrayList<>();
+        List<List<String>> rows = new ArrayList<List<String>>();
         List<String> headers = Arrays.asList("Date", "Amount", "Balance");
         rows.add(headers);
 //        rows.add(Arrays.asList())
@@ -90,6 +92,10 @@ public class BankAccount implements BankAccountController {
     };
 
     public void orderTransactionsByDates(){
-   
+        //compare dates of transactions with a sorting algorithm
+        for (int i = 0; i < this.getTransactions().size(); i++) {
+            LocalDate date = this.getTransactions().get(i).getDate();
+            for (int j = 0; )
+        }
     }
 }
