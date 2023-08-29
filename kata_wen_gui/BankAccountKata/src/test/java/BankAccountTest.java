@@ -57,4 +57,6 @@ public class BankAccountTest {
         bankAccount.manuallyAddTransaction(transaction3);
         bankAccount.printStatement();
     }
+
+
 }

@@ -78,6 +78,18 @@ public class BankAccount implements BankAccountController {
     };
 
     public void printStatement() {
+        //add information to arrayList
+        List<List<String>> rows = new ArrayList<>();
+        List<String> headers = Arrays.asList("Date", "Amount", "Balance");
+        rows.add(headers);
+//        rows.add(Arrays.asList())
 
+
+        //formatting the table
+        //print the table
     };
+
+    public void orderTransactionsByDates(){
+   
+    }
 }
