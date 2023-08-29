@@ -31,6 +31,30 @@ public class BankAccountTest {
         assertEquals(1000, actual);
     }
 
+    @Test
+    public void canWithdraw () {
+        bankAccount.depositOrWithdraw(1000);
+        bankAccount.depositOrWithdraw(-500);
+        int actual = bankAccount.getCurrentBalance();
+        assertEquals(500, actual);
+        assertEquals(2, bankAccount.getTransactions().size());
+        assertEquals(2023, bankAccount.getTransactions().get(0).getDate().getYear());
+    }
 
+    @Test
+    public void canManuallyAddTransactions () {
+        bankAccount.manuallyAddTransaction(transaction1);
+        bankAccount.manuallyAddTransaction(transaction2);
+        bankAccount.manuallyAddTransaction(transaction3);
+        assertEquals(2500, bankAccount.getCurrentBalance());
+        assertEquals(13, bankAccount.getTransactions().get(1).getDate().getDayOfMonth());
+    }
 
+    @Test
+    public void canPrintStatement(){
+        bankAccount.manuallyAddTransaction(transaction1);
+        bankAccount.manuallyAddTransaction(transaction2);
+        bankAccount.manuallyAddTransaction(transaction3);
+        bankAccount.printStatement();
+    }
 }

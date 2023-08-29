@@ -72,6 +72,11 @@ public class BankAccount implements BankAccountController {
 
     };
 
+    public void manuallyAddTransaction(Transaction transaction) {
+        this.transactions.add(transaction);
+        this.setCurrentBalance(this.getCurrentBalance() + transaction.getAmount());
+    };
+
     public void printStatement() {
 
     };
