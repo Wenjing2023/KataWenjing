@@ -38,28 +38,46 @@ describe('yatzy', function(){
 
     it('should identify that an array is not actually a yatzy', function() {
         const actual = yatzy(noOne, "yatzy");
-        assert.strictEqual(actual, false);
+        assert.strictEqual(actual, 0);
     })
 
     it("should calculate score for ones", function(){
         const actual = yatzy(oneOne, "ones");
         assert.strictEqual(actual,1)
     })
+    
     it("should calculate score for fives", function(){
         const actual = yatzy(oneOne, "fives");
         assert.strictEqual(actual,5)
     })
+    
     it("should calculate score for sixs", function(){
-        const actual = yatzy(twoOnes, "sixs");
+        const actual = yatzy(twoOnes, "sixes");
         assert.strictEqual(actual,6)
     })
+    
     it("should calculate score for fours", function(){
         const actual = yatzy(threeOnes, "fours");
         assert.strictEqual(actual,8)
     })
+    
     it("should give 0 if no one for ones", function(){
         const actual = yatzy(noOne, "ones");
         assert.strictEqual(actual,0)
     })
    
+    it('should be able to calculate the score for one pair', function() {
+        const actual = yatzy(twoOnes, "pairs")
+        assert.strictEqual(actual, 2);
+    })
+    
+    it('should be able to calculate the score for one pair', function() {
+        const actual = yatzy(threeOnes, "pairs")
+        assert.strictEqual(actual, 8);
+    })
+    
+    it('should be able to calculate the score for one pair', function() {
+        const actual = yatzy(smallStraight, "pairs")
+        assert.strictEqual(actual, 0);
+    })
 })
