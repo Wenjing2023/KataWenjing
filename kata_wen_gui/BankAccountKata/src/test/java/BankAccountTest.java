@@ -44,6 +44,7 @@ public class BankAccountTest {
     @Test
     public void canManuallyAddTransactions () {
         bankAccount.manuallyAddTransaction(transaction1);
+        assertEquals(1000, bankAccount.getTransactions().get(0).getBalanceAfterTransaction());
         bankAccount.manuallyAddTransaction(transaction2);
         bankAccount.manuallyAddTransaction(transaction3);
         assertEquals(2500, bankAccount.getCurrentBalance());
@@ -58,10 +59,17 @@ public class BankAccountTest {
         assertEquals(10, bankAccount.getTransactions().get(0).getDate().getDayOfMonth());
         bankAccount.orderTransactionsByDatesBubble();
         assertEquals(14, bankAccount.getTransactions().get(0).getDate().getDayOfMonth());
-
-
-
     }
 
+    @Test
+    public void canArrangeTransactionDataInListsOfStrings() {
+        bankAccount.manuallyAddTransaction(transaction1);
+        bankAccount.manuallyAddTransaction(transaction2);
+        bankAccount.manuallyAddTransaction(transaction3);
+        bankAccount.orderTransactionsByDatesBubble();
+        assertEquals(2500, bankAccount.getCurrentBalance());
+        System.out.println(bankAccount.arrangeDataForTableFormatting());
+    }
 
+    
 }

@@ -75,20 +75,25 @@ public class BankAccount implements BankAccountController {
     };
 
     public void manuallyAddTransaction(Transaction transaction) {
+        transaction.setBalanceAfterTransaction(this.getCurrentBalance() + transaction.getAmount());
         this.transactions.add(transaction);
         this.setCurrentBalance(this.getCurrentBalance() + transaction.getAmount());
     };
 
-    public void arrangeDataForTableFormatting() {
+    public List<List<String>> arrangeDataForTableFormatting() {
         //add information to arrayList
         List<List<String>> rows = new ArrayList<List<String>>();
         List<String> headers = Arrays.asList("Date", "Amount", "Balance");
         rows.add(headers);
 //       rows.add(Arrays.asList())
-
-
-        //formatting the table
-        //print the table
+        for (Transaction transaction : this.getTransactions()) {
+            String date = transaction.getDate().toString();
+            String amount = Integer.toString(transaction.getAmount());
+            String balanceAfter = Integer.toString(transaction.getBalanceAfterTransaction());
+            List<String> row = Arrays.asList(date, amount, balanceAfter);
+            rows.add(row);
+        }
+        return rows;
     };
 
     public void orderTransactionsByDatesBubble(){
@@ -111,8 +116,11 @@ public class BankAccount implements BankAccountController {
                 }
             }
         }
-
     }
+
+    public void printStatement() {
+        System.out.println("Hello world");
+    };
 
 
 }
