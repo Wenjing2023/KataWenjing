@@ -71,5 +71,12 @@ public class BankAccountTest {
         System.out.println(bankAccount.arrangeDataForTableFormatting());
     }
 
-    
+    @Test
+    public void canPrintStatement(){
+        bankAccount.manuallyAddTransaction(transaction1);
+        bankAccount.manuallyAddTransaction(transaction2);
+        bankAccount.manuallyAddTransaction(transaction3);
+        bankAccount.orderTransactionsByDatesBubble();
+        bankAccount.printStatement();
+    }
 }
