@@ -91,11 +91,21 @@ public class BankAccount implements BankAccountController {
         //print the table
     };
 
-    public void orderTransactionsByDates(){
+    public void orderTransactionsByDatesBubble(){
         //compare dates of transactions with a sorting algorithm
-        for (int i = 0; i < this.getTransactions().size(); i++) {
-            LocalDate date = this.getTransactions().get(i).getDate();
-            for (int j = 0; )
+        int n = this.getTransactions().size();
+        LocalDate temp = LocalDate.now();
+
+        for (int i=0; i<n; i++) {
+            for (int j=1; j<(n-i); j++) {
+                LocalDate firstIndex = this.getTransactions().get(j-1).getDate();
+                LocalDate secondIndex = this.getTransactions().get(j).getDate();
+                int comparator = firstIndex.compareTo(secondIndex);
+                if (comparator > 0) {
+                    
+                }
+            }
         }
+
     }
 }
