@@ -79,12 +79,12 @@ public class BankAccount implements BankAccountController {
         this.setCurrentBalance(this.getCurrentBalance() + transaction.getAmount());
     };
 
-    public void printStatement() {
+    public void arrangeDataForTableFormatting() {
         //add information to arrayList
         List<List<String>> rows = new ArrayList<List<String>>();
         List<String> headers = Arrays.asList("Date", "Amount", "Balance");
         rows.add(headers);
-//        rows.add(Arrays.asList())
+//       rows.add(Arrays.asList())
 
 
         //formatting the table
@@ -92,20 +92,27 @@ public class BankAccount implements BankAccountController {
     };
 
     public void orderTransactionsByDatesBubble(){
+
         //compare dates of transactions with a sorting algorithm
         int n = this.getTransactions().size();
-        LocalDate temp = LocalDate.now();
-
+        LocalDate date = LocalDate.now();
+        Transaction temp = new Transaction(date, 0);
+        ArrayList<Transaction> arr = this.getTransactions();
         for (int i=0; i<n; i++) {
             for (int j=1; j<(n-i); j++) {
                 LocalDate firstIndex = this.getTransactions().get(j-1).getDate();
                 LocalDate secondIndex = this.getTransactions().get(j).getDate();
                 int comparator = firstIndex.compareTo(secondIndex);
-                if (comparator > 0) {
-                    
+                //comparator > 0 meaning the first date is later
+                if (comparator < 0) {
+                    temp = arr.get(j - 1);
+                    arr.set(j - 1, arr.get(j));
+                    arr.set(j, temp);
                 }
             }
         }
 
     }
+
+
 }

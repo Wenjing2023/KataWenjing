@@ -51,11 +51,16 @@ public class BankAccountTest {
     }
 
     @Test
-    public void canPrintStatement(){
+    public void canSortTransactionsByDate(){
         bankAccount.manuallyAddTransaction(transaction1);
         bankAccount.manuallyAddTransaction(transaction2);
         bankAccount.manuallyAddTransaction(transaction3);
-        bankAccount.printStatement();
+        assertEquals(10, bankAccount.getTransactions().get(0).getDate().getDayOfMonth());
+        bankAccount.orderTransactionsByDatesBubble();
+        assertEquals(14, bankAccount.getTransactions().get(0).getDate().getDayOfMonth());
+
+
+
     }
 
 
