@@ -13,6 +13,7 @@ describe('yatzy', function(){
     let largeStraight
     let fullHouse
     let twoFours
+    let unorderedSmallStraight
 
     beforeEach(function(){
         noOne = [2,3,2,4,5]
@@ -22,6 +23,7 @@ describe('yatzy', function(){
         fourOnes = [1,1,1,1,4]
         yatzyOne = [1,1,1,1,1]
         smallStraight = [1,2,3,4,5]
+        unorderedSmallStraight = [2,3,5,4,1]
         largeStraight = [2,3,4,5,6]
         fullHouse = [2,2,3,3,3]
         twoFours = [4,4,3,1,1]
@@ -116,5 +118,20 @@ describe('yatzy', function(){
     it("should calculate as 4 for four ones", function(){
         const actual = yatzy(fourOnes, "fourOfAKind")
         assert.strictEqual(actual, 4)
+    })
+
+    it("should calculate as 4 for five ones for four of a kind category", function(){
+        const actual = yatzy(yatzyOne, "fourOfAKind")
+        assert.strictEqual(actual, 4)
+    })
+
+    it("should calculate as 0 for 3 ones for four of a kind category", function(){
+        const actual = yatzy(threeOnes, "fourOfAKind")
+        assert.strictEqual(actual, 0)
+    })
+
+    it('should recognise a small straight', function() {
+        const actual = yatzy(unorderedSmallStraight, "smallStraight")
+        assert.strictEqual(actual, 15)
     })
 })

@@ -93,6 +93,33 @@ const yatzy = function(diceRoll, rollCase){
         return Object.values(dictOfNumbers).reduce((sum, num) => sum += num)
     }
 
+    const checkAndCalculateforFourOfAKind = (arr) => {
+        const dictOfNumbers = {}
+        for (let i = 1; i <= 6; i++) {
+            const numArray = arr.filter((num)=>num === i)
+            if (numArray.length >= 4) {
+                dictOfNumbers["arrayOf" + i + "s"] = 0
+                for (let j=0; j<4; j++) {
+                    dictOfNumbers["arrayOf" + i + "s"] += numArray[i]
+                }
+                return Object.values(dictOfNumbers)[0]
+            }
+        }
+        return 0
+    }
+
+    const checkForSmallStraight = function(arr) {
+        const smallStraightArray = [1,2,3,4,5]
+        const sortedArr = arr.sort((a,b) => a-b)
+        const compareArrays = (smallStraightArray, sortedArr) => {
+            smallStraightArray.length === sortedArr.lenth &&
+            smallStraightArray.every((element, index) => element === sortedArr[index])
+        }
+        if (compareArrays) {
+            return 15
+        }
+        return 0
+    }
 
     switch(rollCase) {
         case "chance":
@@ -118,7 +145,11 @@ const yatzy = function(diceRoll, rollCase){
         case "threeOfAKind":
             result = checkAndCalculateforThreeOfAKind(diceRoll)
             break;
-        
+        case "fourOfAKind":
+            result = checkAndCalculateforFourOfAKind(diceRoll)
+            break;
+        case "smallStraight":
+            result = checkForSmallStraight(diceRoll)
     }
 
     return result;
