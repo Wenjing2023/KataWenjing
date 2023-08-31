@@ -56,13 +56,25 @@ const yatzy = function(diceRoll, rollCase){
         },0);
     }
 
-    const checkAndCalculateforPairs = function(arr) {
+    const checkAndCalculateforPair = function(arr) {
         const dictOfNumbers = {}
         for (let i = 1; i <= 6; i++) {
             const numArray = arr.filter((num)=>num === i)
             dictOfNumbers["arrayOf" + i + "s"] = numArray.length >= 2 ? numArray[0] + numArray[1] : 0;
         }
         return Math.max(...Object.values(dictOfNumbers))
+    }
+
+    const checkAndCalculateforTwoPairs = (arr) => {
+        const dictOfNumbers = {}
+        for (let i = 1; i <= 6; i++) {
+            const numArray = arr.filter((num)=>num === i)
+            dictOfNumbers["arrayOf" + i + "s"] = numArray.length >= 2 ? numArray[0] + numArray[1] : 0;
+        }
+        console.log(dictOfNumbers);
+        const total = Object.values(dictOfNumbers).reduce((sum, num) => sum += num)
+        console.log(total);
+        return total
     }
 
 
@@ -81,8 +93,11 @@ const yatzy = function(diceRoll, rollCase){
         case "sixes":    
             result = calculateNumsScore(diceRoll, rollCase)
             break;
-        case "pairs":
-            result = checkAndCalculateforPairs(diceRoll)
+        case "pair":
+            result = checkAndCalculateforPair(diceRoll)
+            break;
+        case "twoPairs":
+            result = checkAndCalculateforTwoPairs(diceRoll)
             break;
         
     }
