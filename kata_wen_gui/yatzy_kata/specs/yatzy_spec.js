@@ -14,6 +14,7 @@ describe('yatzy', function(){
     let fullHouse
     let twoFours
     let unorderedSmallStraight
+    let unorderedLargeStraight
 
     beforeEach(function(){
         noOne = [2,3,2,4,5]
@@ -25,6 +26,7 @@ describe('yatzy', function(){
         smallStraight = [1,2,3,4,5]
         unorderedSmallStraight = [2,3,5,4,1]
         largeStraight = [2,3,4,5,6]
+        unorderedLargeStraight = [2,4,6,5,3]
         fullHouse = [2,2,3,3,3]
         twoFours = [4,4,3,1,1]
     })
@@ -134,4 +136,16 @@ describe('yatzy', function(){
         const actual = yatzy(unorderedSmallStraight, "smallStraight")
         assert.strictEqual(actual, 15)
     })
+
+    it('should recognise a large straight', function() {
+        const actual = yatzy(unorderedLargeStraight, "largeStraight")
+        assert.strictEqual(actual, 20)
+    })
+
+    it('should recognise a full house', function() {
+        const actual = yatzy(fullHouse, "fullHouse")
+        assert.strictEqual(actual, 13)
+    })
+
+
 })

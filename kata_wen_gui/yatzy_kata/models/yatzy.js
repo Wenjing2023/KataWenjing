@@ -121,6 +121,32 @@ const yatzy = function(diceRoll, rollCase){
         return 0
     }
 
+    const checkForLargeStraight = function(arr) {
+        const largeStraightArray = [2,3,4,5,6]
+        const sortedArr = arr.sort((a,b) => a-b)
+        const compareArrays = (largeStraightArray, sortedArr) => {
+            largeStraightArray.length === sortedArr.lenth &&
+            largeStraightArray.every((element, index) => element === sortedArr[index])
+        }
+        if (compareArrays) {
+            return 20
+        }
+        return 0
+    }
+
+    const checkForFullHouse = (arr) => {
+        const superArray = []
+        for (let i = 1; i <= 6; i++ ){
+            const numArray = arr.filter((num)=>num === i)
+            if (numArray === 3 || 2){
+                superArray.push(numArray)
+            }
+        }
+        if (superArray.length ===2 && ())
+    }
+
+
+
     switch(rollCase) {
         case "chance":
             result = calculateChanceScore(diceRoll)
@@ -150,6 +176,13 @@ const yatzy = function(diceRoll, rollCase){
             break;
         case "smallStraight":
             result = checkForSmallStraight(diceRoll)
+            break;
+        case "largeStraight":
+            result = checkForLargeStraight(diceRoll)
+            break;
+        case "fullHouse":
+            result = checkForFullHouse(diceRoll)
+            break;
     }
 
     return result;
