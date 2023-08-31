@@ -147,5 +147,8 @@ describe('yatzy', function(){
         assert.strictEqual(actual, 13)
     })
 
-
+    it('should recognise a dice roll is not full house', function() {
+        const actual = yatzy(yatzyOne, "fullHouse")
+        assert.strictEqual(actual, 0)
+    })
 })

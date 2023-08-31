@@ -135,14 +135,19 @@ const yatzy = function(diceRoll, rollCase){
     }
 
     const checkForFullHouse = (arr) => {
-        const superArray = []
+        let superArray = []
         for (let i = 1; i <= 6; i++ ){
             const numArray = arr.filter((num)=>num === i)
-            if (numArray === 3 || 2){
+            if (numArray.length === 3 || numArray.length === 2){
                 superArray.push(numArray)
             }
         }
-        if (superArray.length ===2 && ())
+        if ((superArray.length === 2 && superArray[0].length === 2 && superArray[1].length === 3) ||
+        superArray.length === 2 && superArray[0].length === 3 && superArray[1].length === 2) {
+            superArray = [...superArray[0], ...superArray[1]]
+            return superArray.reduce((sum, num) => sum += num)
+        }
+        return 0
     }
 
 
