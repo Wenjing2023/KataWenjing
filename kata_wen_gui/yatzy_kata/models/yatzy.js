@@ -71,10 +71,26 @@ const yatzy = function(diceRoll, rollCase){
             const numArray = arr.filter((num)=>num === i)
             dictOfNumbers["arrayOf" + i + "s"] = numArray.length >= 2 ? numArray[0] + numArray[1] : 0;
         }
-        console.log(dictOfNumbers);
-        const total = Object.values(dictOfNumbers).reduce((sum, num) => sum += num)
-        console.log(total);
-        return total
+        let counter = 0
+        for (const value in dictOfNumbers){
+            if (dictOfNumbers[value]!==0){
+                counter ++
+            }
+        }
+        if (counter ===2){
+        return Object.values(dictOfNumbers).reduce((sum, num) => sum += num)
+        }
+
+        return 0
+    }
+
+    const checkAndCalculateforThreeOfAKind = (arr) =>{
+        const dictOfNumbers = {}
+        for (let i = 1; i <= 6; i++) {
+            const numArray = arr.filter((num)=>num === i)
+            dictOfNumbers["arrayOf" + i + "s"] = numArray.length >= 3 ? numArray[0] + numArray[1] + numArray[2]: 0;
+        }
+        return Object.values(dictOfNumbers).reduce((sum, num) => sum += num)
     }
 
 
@@ -98,6 +114,9 @@ const yatzy = function(diceRoll, rollCase){
             break;
         case "twoPairs":
             result = checkAndCalculateforTwoPairs(diceRoll)
+            break;
+        case "threeOfAKind":
+            result = checkAndCalculateforThreeOfAKind(diceRoll)
             break;
         
     }

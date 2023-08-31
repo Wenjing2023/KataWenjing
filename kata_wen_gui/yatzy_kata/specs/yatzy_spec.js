@@ -92,4 +92,29 @@ describe('yatzy', function(){
         const actual = yatzy(fullHouse, "twoPairs")
         assert.strictEqual(actual, 10);
     })
+
+    it("should calculate as 0 for only one pair", function(){
+        const actual = yatzy(noOne, "twoPairs")
+        assert.strictEqual(actual, 0)
+    })
+
+    it("should calculate as 0 for 4 of a kind", function(){
+        const actual = yatzy(fourOnes, "twoPairs")
+        assert.strictEqual(actual, 0)
+    })
+
+    it("should calculate as 3 for three ones", function(){
+        const actual = yatzy(threeOnes, "threeOfAKind")
+        assert.strictEqual(actual, 3)
+    })
+
+    it("should calculate as 3 for four ones in three of a kind category", function(){
+        const actual = yatzy(fourOnes, "threeOfAKind")
+        assert.strictEqual(actual, 3)
+    })
+
+    it("should calculate as 4 for four ones", function(){
+        const actual = yatzy(fourOnes, "fourOfAKind")
+        assert.strictEqual(actual, 4)
+    })
 })
