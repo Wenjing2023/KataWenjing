@@ -19,9 +19,15 @@ public class Pairs {
 //            }
 //        }
         for (int i = 0; i < arr.size(); i++){
-            int el = arr.indexOf(i);
-            if(arr.contains(n-el)){
-                
+            int el = arr.get(i);
+            if (arr.contains(n-el)){
+                int indexOfNMinusEl = arr.indexOf(n-el);
+                arr.remove(indexOfNMinusEl);
+                arr.remove(i);
+                arr.add(n+1);
+                arr.add(n+1);
+                counter++;
+                System.out.println(arr);
             }
         }
 
