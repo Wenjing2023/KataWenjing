@@ -20,12 +20,10 @@ public class Pairs {
 //        }
         for (int i = 0; i < arr.size(); i++){
             int el = arr.get(i);
-            if (arr.contains(n-el)){
-                int indexOfNMinusEl = arr.indexOf(n-el);
-                arr.remove(indexOfNMinusEl);
-                arr.remove(i);
-                arr.add(n+1);
-                arr.add(n+1);
+            int indexOfNMinusEl = arr.indexOf(n-el);
+            if (arr.contains(n-el) && i != indexOfNMinusEl){
+                  arr.set(indexOfNMinusEl, n+1);
+                  arr.set(i, n+1);
                 counter++;
                 System.out.println(arr);
             }
