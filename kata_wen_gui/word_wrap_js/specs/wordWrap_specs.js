@@ -18,4 +18,16 @@ describe("wordWrap", function () {
             const actual = wordWrap(easy, 8)
             assert.strictEqual(actual,2)
       })
+
+      it("returns 1 lines for an easy string with a column number of 20", function () {
+            const actual = wordWrap(easy, 20)
+            assert.strictEqual(actual,1)
+      })
+
+      it("returns 1 lines for an easy string with a column number of 3", function () {
+            const actual = wordWrap(easy, 3)
+            assert.strictEqual(actual,4)
+      })
+
+
 })
