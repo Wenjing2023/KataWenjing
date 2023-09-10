@@ -14,8 +14,8 @@ describe("wordWrap", function () {
             chemistry = "methylamphetalamine"
       })
 
-      it("can return 2 lines for an easy string with a column number of 10", function () {
-            const actual = wordWrap(easy, 10)
+      it("returns 2 lines for an easy string with a column number of 8", function () {
+            const actual = wordWrap(easy, 8)
             assert.strictEqual(actual,2)
       })
 })

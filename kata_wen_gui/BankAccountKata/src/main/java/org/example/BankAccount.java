@@ -8,6 +8,7 @@ import java.util.List;
 public class BankAccount implements BankAccountController {
     private String ownerName;
     private int currentBalance;
+    private int bank;
 
     private ArrayList<Transaction> transactions;
 
@@ -15,6 +16,7 @@ public class BankAccount implements BankAccountController {
         this.ownerName = ownerName;
         this.currentBalance = 0;
         this.transactions = new ArrayList<Transaction>();
+
 
     }
 
