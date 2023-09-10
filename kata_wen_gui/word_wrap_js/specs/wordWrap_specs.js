@@ -6,12 +6,14 @@ describe("wordWrap", function () {
       let easy;
       let cat;
       let chemistry;
+      let sea;
       
 
       beforeEach(function () {
             easy = "Hello World"
             cat = "Tanpopo the black and white cat catches the birds"
             chemistry = "methylamphetalamine"
+            sea = "The cat saw the sea"
       })
 
       // it("returns 2 lines for an easy string with a column number of 8", function () {
@@ -33,7 +35,11 @@ describe("wordWrap", function () {
       //       assert.strictEqual(wordWrap(cat, 50), 1)
       // })
       
+      // it('should return 2 lines for the cat string with 30 length', function() {
+      //       assert.strictEqual(wordWrap(cat, 6), 2)
+      // })
+
       it('should return 2 lines for the cat string with 30 length', function() {
-            assert.strictEqual(wordWrap(cat, 30), 2)
+            assert.strictEqual(wordWrap(sea, 7), 3)
       })
 })

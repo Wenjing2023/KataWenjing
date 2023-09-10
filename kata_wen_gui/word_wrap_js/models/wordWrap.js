@@ -4,7 +4,7 @@ const wordWrap = function (str, num) {
   let startIndex = 0;
   let endIndex = num;
 
-      if (strLength <= num) {
+  if (strLength <= num) {
     console.log(str);
     return 1;
   }
@@ -12,30 +12,48 @@ const wordWrap = function (str, num) {
   while (startIndex < strLength) {
     const subString = str.slice(startIndex, endIndex);
     const lastIndexOfSpace = subString.lastIndexOf(" ");
-      if (lastIndexOfSpace !== -1) {
-              const subSubString = subString.slice(0, lastIndexOfSpace);
-              startIndex += lastIndexOfSpace + 1;
-              endIndex = startIndex + num;
-              arr.push(subSubString);
-      } else if (lastIndexOfSpace === -1) {
-            if ((startIndex + num) < strLength) {
-                  arr.push(subString +"-");
-            } else {
-                  arr.push(subString);                  
-            }
-            startIndex = endIndex;
-            endIndex = endIndex + num;
-        }
- 
+
+    if (
+      lastIndexOfSpace !== -1 &&
+      subString.length === num &&
+      str[endIndex + 1] === " "
+    ) {
+          arr.push(subString)
+          startIndex = endIndex + 1;
+          endIndex = endIndex + num;
+          console.log("cattt");
+          
+    } else if (
+      lastIndexOfSpace !== -1 &&
+      subString.length === num &&
+      str[endIndex + 1] !== " "
+    ) {
+      const subSubString = subString.slice(0, lastIndexOfSpace);
+      startIndex += lastIndexOfSpace + 1;
+      endIndex = startIndex + num;
+      arr.push(subSubString);
+    } else if (lastIndexOfSpace !== -1 && subString.length < num) {
+      arr.push(subString);
+      startIndex = endIndex;
+      endIndex = endIndex + num;
+    } else if (lastIndexOfSpace === -1) {
+      if (startIndex + num < strLength) {
+        arr.push(subString + "-");
+      } else {
+        arr.push(subString);
+      }
+      startIndex = endIndex;
+      endIndex = endIndex + num;
+    }
   }
 
   for (const el of arr) {
-      if (arr.indexOf(el) !== arr.length-1){
-            console.log(el.length);
-            console.log(el + "\n");
-      } else {
-            console.log(el);
-      }
+    if (arr.indexOf(el) !== arr.length - 1) {
+      console.log(el.length);
+      console.log(el + "\n");
+    } else {
+      console.log(el);
+    }
   }
 
   return arr.length;
