@@ -12,44 +12,51 @@ const wordWrap = function (str, num) {
   while (startIndex < strLength) {
     const subString = str.slice(startIndex, endIndex);
     const lastIndexOfSpace = subString.lastIndexOf(" ");
-
     if (
       lastIndexOfSpace !== -1 &&
       subString.length === num &&
-      str[endIndex + 1] === " "
+      str[endIndex] === " "
+      // # the cat saw the sea
     ) {
           arr.push(subString)
           startIndex = endIndex + 1;
-          endIndex = endIndex + num;
-          console.log("cattt");
-          
+          endIndex = startIndex + num;   
     } else if (
       lastIndexOfSpace !== -1 &&
       subString.length === num &&
-      str[endIndex + 1] !== " "
+      str[endIndex] !== " "
+      // # Tanpopo the black...
     ) {
       const subSubString = subString.slice(0, lastIndexOfSpace);
+      arr.push(subSubString);
       startIndex += lastIndexOfSpace + 1;
       endIndex = startIndex + num;
-      arr.push(subSubString);
     } else if (lastIndexOfSpace !== -1 && subString.length < num) {
       arr.push(subString);
       startIndex = endIndex;
       endIndex = endIndex + num;
     } else if (lastIndexOfSpace === -1) {
-      if (startIndex + num < strLength) {
-        arr.push(subString + "-");
-      } else {
-        arr.push(subString);
+      if ( str[endIndex] === " ") {
+        arr.push(subString );
+        startIndex = endIndex +1;
+        endIndex = endIndex + num;
       }
-      startIndex = endIndex;
-      endIndex = endIndex + num;
+      else if (endIndex < strLength && str[endIndex] !==" " ) {
+        arr.push(subString + "-");
+        startIndex = endIndex;
+        endIndex = endIndex + num;
+      }
+      else{
+        arr.push(subString);
+        startIndex = endIndex;
+        endIndex = endIndex + num;
+      }
+     
     }
   }
 
   for (const el of arr) {
     if (arr.indexOf(el) !== arr.length - 1) {
-      console.log(el.length);
       console.log(el + "\n");
     } else {
       console.log(el);
